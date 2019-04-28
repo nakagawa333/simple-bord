@@ -1,0 +1,13 @@
+{% extends "layout.html" %}
+{% block content %}
+{% for post in posts %}
+<div class="card">
+	<div class="article-metadata">
+	<small class="text-muted">{{ post.date_posted.strftime('%Y-%m-%d')}}</small>
+	<a class="article-title">{{ post.title }}</a>
+	<p class="article-content">{{ post.content }}</p>
+</div>
+{% endfor %}
+{% endblock %}
+
+

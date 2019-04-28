@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="content-section">
+    <form method="POST" action="">
+        {{ form.hidden_tag() }}
+        <fieldset class="form-group">
+            <legend class="border-bottom mb-4"></legend>
+            <div class="card">
+                <div class="form-grpup">
+                    {{ form.title(class="form-control form-control-lg")}}
+                </div>
+                <div class="form-group">
+                    {{ form.content(class="form-control form-control-lg is-invalid")}}
+                </div>
+
+                <div class="form-group">
+                    {{ form.submit(class="btn btn-outline-info")}}
+                </div>
+            </div>
+        </fieldset>
+    </form>
+</div>
+{% for post in posts %}
+<div class="card">
+    <div class="article-metadata">
+        <small class="text-muted">{{ post.date_posted.strftime('%Y-%m-%d')}}</small>
+        <a class="article-title" href="{{url_for('post',post_id=post.id)}}">{{ post.title }}</a>
+        <p class="article-content">{{ post.content }}</p>
+    </div>
+</div>
+{% endfor %}
+{% endblock content %}
